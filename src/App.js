@@ -1,11 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import TodoForm from "./components/TodoForm";
+import TodoItem from "./components/TodoItem";
+import TodoFooter from "./components/TodoFooter"
 
 function App() {
   return (
-    <div className="App">
-
+    <div className="app-container">
+      <div className="todo-container">
+        <TodoForm />
+        <div className="todo-list-container">
+          <TodoItem />
+        </div>
+        <TodoFooter />
+      </div>
     </div>
   );
 }
