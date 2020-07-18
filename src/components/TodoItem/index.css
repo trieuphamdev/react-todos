@@ -1,3 +1,8 @@
+button {
+  border: none;
+  background-color: transparent;
+}
+
 .todo-item-container {
   padding: 15px;
   display: flex;
