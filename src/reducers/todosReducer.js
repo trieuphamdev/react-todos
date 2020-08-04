@@ -1,19 +1,6 @@
 import { ADD_TODO, UPDATE_TODO, REMOVE_TODO } from "../constants/todoConstant";
 
-const initTodos = [
-  {
-    id: 1,
-    content: "First Todo",
-    completed: true,
-  },
-  {
-    id: 2,
-    content: "Second Todo",
-    completed: false,
-  },
-];
-
-const todosReducer = (state = initTodos, { type, payload }) => {
+const todosReducer = (state = [], { type, payload }) => {
   switch (type) {
     case ADD_TODO:
       return [...state, payload];

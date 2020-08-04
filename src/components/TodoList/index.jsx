@@ -14,10 +14,10 @@ class TodoList extends Component {
       <div className="todo-container">
         <TodoForm />
         <div className="todo-list-container">
-          {todos.map((todo) => (
+          {!!todos.length && todos.map((todo) => (
             <TodoItem key={todo.id} todo={todo} />
           ))}
-          {todos.length === 0 && <div className="no-data">No todos</div>}
+          {!todos.length && <div className="no-data">No todos</div>}
         </div>
         <TodoFooter />
       </div>
