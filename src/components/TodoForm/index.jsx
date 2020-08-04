@@ -8,32 +8,27 @@ import { addTodo } from "../../actions/todoActions";
 class TodoForm extends Component {
   constructor(props) {
     super(props);
-    this.state = this.newTodo()
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = this.newTodo();
   }
 
-  newTodo() {
-    return {
-      id: new Date().getTime(),
-      checked: false,
-      content: "",
-    }
-  }
+  newTodo = () => ({
+    id: new Date().getTime(),
+    completed: false,
+    content: "",
+  });
 
-  handleChange(event) {
+  handleChange = (e) => {
     this.setState({
-      content: event.target.value,
+      content: e.target.value,
     });
-  }
+  };
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
     const { addTodo } = this.props;
     addTodo(this.state);
-    this.setState(this.newTodo())
-  }
+    this.setState(this.newTodo());
+  };
 
   render() {
     return (

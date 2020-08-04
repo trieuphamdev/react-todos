@@ -15,14 +15,9 @@ class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      editedContent: this.props.todo.content,
       editing: false,
     };
-  }
-
-  componentWillMount() {
-    this.setState({
-      todo: this.props.todo,
-    });
   }
 
   handleOnComplete = () => {
@@ -38,20 +33,16 @@ class TodoItem extends Component {
   };
 
   handleOnEditing = (e) => {
-    let content = e.target.value;
-    this.setState((prevState) => ({
-      todo: {
-        ...prevState.todo,
-        content: content,
-      },
-    }));
+    this.setState({
+      editedContent: e.target.value,
+    });
   };
 
   handleOnSave = (e) => {
     e.preventDefault();
-    const { todo } = this.state;
-    const { updateTodo } = this.props;
-    updateTodo(todo);
+    const { todo, updateTodo } = this.props;
+    const editedTodo = { ...todo, content: this.state.editedContent };
+    updateTodo(editedTodo);
     this.setState({
       editing: false,
     });
@@ -59,7 +50,7 @@ class TodoItem extends Component {
 
   handleOnCancel = () => {
     this.setState({
-      todo: this.props.todo,
+      editedContent: this.props.todo.content,
       editing: false,
     });
   };
@@ -87,7 +78,7 @@ class TodoItem extends Component {
           <form className="todo-item-form" onSubmit={this.handleOnSave}>
             <div className="todo-item-content">
               <input
-                value={this.state.todo.content}
+                value={this.state.editedContent}
                 onChange={this.handleOnEditing}
               />
             </div>
