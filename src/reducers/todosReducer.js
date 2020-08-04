@@ -1,4 +1,4 @@
-import { ADD_TODO, UPDATE_TODO, REMOVE_TODO } from "../constants/todoConstant";
+import { ADD_TODO, UPDATE_TODO, REMOVE_TODO, REMOVE_COMPLETED_TODO } from "../constants/todoConstant";
 
 const todosReducer = (state = [], { type, payload }) => {
   switch (type) {
@@ -8,6 +8,8 @@ const todosReducer = (state = [], { type, payload }) => {
       return state.map((todo) => (todo.id === payload.id ? payload : todo));
     case REMOVE_TODO:
       return state.filter(({ id }) => id !== payload.id);
+    case REMOVE_COMPLETED_TODO:
+      return state.filter(({completed}) => !completed)
     default:
       return state;
   }

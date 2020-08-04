@@ -29,3 +29,11 @@
   position: absolute;
   left: 20px;
 }
+
+.todo-clear-complete {
+  color: #777;
+  font-weight: 300;
+  text-decoration: none;
+  position: absolute;
+  right: 20px;
+}

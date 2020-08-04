@@ -1,4 +1,4 @@
-import { ADD_TODO, UPDATE_TODO, REMOVE_TODO } from "../constants/todoConstant";
+import { ADD_TODO, UPDATE_TODO, REMOVE_TODO, REMOVE_COMPLETED_TODO } from "../constants/todoConstant";
 
 export const addTodo = (todo) => (dispatch) => {
   dispatch({
@@ -20,3 +20,10 @@ export const removeTodo = (todo) => (dispatch) => {
     payload: todo,
   });
 };
+
+export const clearCompletedTodo = () => (dispatch) => {
+  dispatch({
+    type: REMOVE_COMPLETED_TODO,
+    payload: null,
+  })
+}
