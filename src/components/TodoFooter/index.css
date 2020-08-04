@@ -9,7 +9,7 @@
   border-radius: 8px;
 }
 
-.todo-menus a {
+.todo-menus button {
   color: #777;
   font-weight: 300;
   text-decoration: none;
@@ -18,8 +18,8 @@
   border-radius: 8px;
 }
 
-.todo-menus a.active,
-.todo-menus a:hover {
+.todo-menus button.active,
+.todo-menus button:hover {
   border: 1px solid rgba(175, 47, 47, 0.2);
 }
 
