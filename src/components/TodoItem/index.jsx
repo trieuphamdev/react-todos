@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { updateTodo } from "../../actions/todoActions"
 
 import GreenTickIcon from "../../assets/images/green-tick.svg";
 import BlackTickIcon from "../../assets/images/black-tick.svg";
@@ -8,8 +11,18 @@ import DeleteIcon from "../../assets/images/delete.svg";
 import "./index.css";
 
 class TodoItem extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...this.props.todo,
+      editing: false,
+    }
+  }
   handleOnComplete = () => {
-    this.props.handleOnComplete();
+    const { updateTodo, todo } = this.props
+
+    updateTodo({...todo, completed: !todo.completed})
   };
 
   render() {
@@ -40,4 +53,8 @@ class TodoItem extends Component {
   }
 }
 
-export default TodoItem;
+const mapDispatchToProps = {
+  updateTodo,
+}
+
+export default connect(()=>({}), mapDispatchToProps)(TodoItem);
