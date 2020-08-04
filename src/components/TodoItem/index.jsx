@@ -18,6 +18,11 @@ class TodoItem extends Component {
       editedContent: this.props.todo.content,
       editing: false,
     };
+    this.inputRef = React.createRef();
+  }
+
+  componentDidUpdate = () => {
+    if (this.state.editing) this.inputRef.current.focus()
   }
 
   handleOnComplete = () => {
@@ -26,7 +31,7 @@ class TodoItem extends Component {
     updateTodo({ ...todo, completed: !todo.completed });
   };
 
-  toggleEdit = () => {
+  toggleEdit = (e) => {
     this.setState({
       editing: true,
     });
@@ -80,6 +85,7 @@ class TodoItem extends Component {
               <input
                 value={this.state.editedContent}
                 onChange={this.handleOnEditing}
+                ref={this.inputRef}
               />
             </div>
             <div className="todo-item-options">
@@ -103,7 +109,7 @@ class TodoItem extends Component {
             <div className="todo-item-options">
               <button
                 className="icon-btn"
-                onClick={() => this.setState({ editing: true })}
+                onClick={this.toggleEdit}
               >
                 <img src={EditIcon} alt="edit" />
               </button>
