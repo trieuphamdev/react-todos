@@ -17,6 +17,7 @@ class TodoList extends Component {
           {todos.map((todo) => (
             <TodoItem key={todo.id} todo={todo} />
           ))}
+          {todos.length === 0 && <div className="no-data">No todos</div>}
         </div>
         <TodoFooter />
       </div>

@@ -4,12 +4,12 @@ const initTodos = [
   {
     id: 1,
     content: "First Todo",
-    checked: true,
+    completed: true,
   },
   {
     id: 2,
     content: "Second Todo",
-    checked: false,
+    completed: false,
   },
 ];
 
